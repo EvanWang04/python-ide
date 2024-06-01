@@ -14,7 +14,7 @@ cd python-ide
 
 3. Run the application with docker (and install docker if needed: https://docs.docker.com/get-docker/):
 ``` bash
-docker compose up
+docker-compose up
 ```
 
 4. Open your web browser and go to localhost:3000.

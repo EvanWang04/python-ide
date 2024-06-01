@@ -51,6 +51,6 @@ def execute_code_in_docker(code: str) -> str:
         try:
             container.stop()
             container.remove(force=True)
-        except:
+        except docker.errors.APIError as e:
             # Container was already removed
             pass

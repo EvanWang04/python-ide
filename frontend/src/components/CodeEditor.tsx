@@ -10,7 +10,7 @@ const CodeEditor: React.FC = () => {
   const handleTestCode = async () => {
     try {
       setLoading(true);
-      const result = await testCode(code);
+      const result: string = await testCode(code);
       setOutput(result);
     } catch (error: any) {
       setOutput(error.message);
@@ -22,7 +22,7 @@ const CodeEditor: React.FC = () => {
   const handleSubmitCode = async () => {
     try {
       setLoading(true);
-      const result = await submitCode(code);
+      const result: string = await submitCode(code);
       setOutput(result);
     } catch (error: any) {
       setOutput(error.message);

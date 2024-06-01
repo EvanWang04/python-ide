@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import { fetchSubmissions } from "../api/code";
-
-interface Submission {
-  code: string;
-  output: string;
-}
+import { fetchSubmissions, Submission } from "../api/code";
 
 const Submissions: React.FC = () => {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
@@ -13,7 +8,7 @@ const Submissions: React.FC = () => {
   useEffect(() => {
     const getSubmissions = async () => {
       try {
-        const data = await fetchSubmissions();
+        const data: Submission[] = await fetchSubmissions();
         setSubmissions(data);
       } catch (error: any) {
         console.error(error.message);

@@ -1,14 +1,19 @@
+from typing import Optional
+
 import docker
-from fastapi import HTTPException
-from config import settings
 import shlex
+from docker.models.containers import Container
+from docker import DockerClient
+from fastapi import HTTPException
+
+from config import settings
 
 SIBLING_IMAGE_NAME = settings.sibling_image_name
 
 
-def run_container(code: str):
-    client = docker.from_env()
-    safe_code = shlex.quote(code)
+def run_container(code: str) -> Container:
+    client: DockerClient = docker.from_env()
+    safe_code: str = shlex.quote(code)
 
     return client.containers.run(
         settings.sibling_image_name,
@@ -24,13 +29,13 @@ def run_container(code: str):
 
 
 def execute_code_in_docker(code: str) -> str:
-    container = None
+    container: Optional[Container] = None
     try:
         container = run_container(code)
 
         container.wait(timeout=5)
-        stdout = container.logs(stdout=True, stderr=False).decode("utf-8")
-        stderr = container.logs(stdout=False, stderr=True).decode("utf-8")
+        stdout: str = container.logs(stdout=True, stderr=False).decode("utf-8")
+        stderr: str = container.logs(stdout=False, stderr=True).decode("utf-8")
 
         if stderr:
             raise HTTPException(

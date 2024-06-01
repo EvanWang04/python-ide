@@ -5,7 +5,6 @@ out/
 node_modules/
 
 __pycache__/
-*.py[cod]
 *.pyd
 *.pyo
 *.pyz
@@ -16,7 +15,6 @@ build/
 *.egg
 *.log
 *.csv
-*.json
 *.sqlite
 
 .docker/

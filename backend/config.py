@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     user_submitted_code_cpu_period: int
     user_submitted_code_cpu_quota: int
     user_submitted_code_network_disabled: bool
+    user_submitted_code_read_only_enabled: bool
 
     class Config:
         env_file = ".env"

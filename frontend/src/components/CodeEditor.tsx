@@ -3,8 +3,8 @@ import Editor from "@monaco-editor/react";
 import { testCode, submitCode } from "@/api/code";
 
 const CodeEditor: React.FC = () => {
-  const [code, setCode] = useState<string>("print('Hello Datacurve')");
-  const [output, setOutput] = useState<string>("Hello Datacurve");
+  const [code, setCode] = useState<string>("print('Hello World')");
+  const [output, setOutput] = useState<string>("Hello World");
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleTestCode = async () => {
